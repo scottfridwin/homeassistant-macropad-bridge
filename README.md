@@ -1,1 +1,1 @@
-# homeassistant-macropad-proxy
+# homeassistant-macropad-bridge
