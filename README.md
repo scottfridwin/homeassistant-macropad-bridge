@@ -1,1 +1,1 @@
-# docker-ha-macropad-proxy
+# homeassistant-macropad-proxy
