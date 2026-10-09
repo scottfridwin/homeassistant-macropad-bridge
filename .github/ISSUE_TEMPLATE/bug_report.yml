@@ -1,0 +1,38 @@
+name: Bug report
+description: Something does not work as expected
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Image version
+      description: The image tag or digest you are running.
+      placeholder: ghcr.io/scottfridwin/homeassistant-macropad-bridge:1.0.0
+    validations:
+      required: true
+  - type: input
+    id: host
+    attributes:
+      label: Host and macropad
+      description: Host OS and architecture, and the macropad's USB vendor and product ID.
+      placeholder: Raspberry Pi OS 64-bit (arm64), 1189:8890
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Container log
+      description: Run with `LOG_LEVEL=DEBUG` if possible. Remove tokens and host names you do not want to share.
+      render: text
+  - type: textarea
+    id: devices
+    attributes:
+      label: Output of `ls -l /dev/input/by-id/` on the host
+      render: text
