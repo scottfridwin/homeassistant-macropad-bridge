@@ -1,0 +1,27 @@
+secrets:
+  ha_token:
+    file: ./secrets/ha_token
+
+services:
+  macropad:
+    image: ghcr.io/scottfridwin/homeassistant-macropad-bridge:1
+    container_name: macropad-bridge
+    group_add:
+      - "105" # the host's input group: getent group input | cut -d: -f3
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /dev/input:/dev/input:ro
+    device_cgroup_rules:
+      - "c 13:* r" # read-only access to input devices only
+    env_file: .env
+    environment:
+      - HA_TOKEN_FILE=/run/secrets/ha_token
+    secrets:
+      - ha_token
+    restart: unless-stopped
