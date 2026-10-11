@@ -3,6 +3,7 @@
 [![Build](https://img.shields.io/github/actions/workflow/status/scottfridwin/homeassistant-macropad-bridge/build.yml?branch=main&label=build)](https://github.com/scottfridwin/homeassistant-macropad-bridge/actions/workflows/build.yml)
 [![Release](https://img.shields.io/github/v/release/scottfridwin/homeassistant-macropad-bridge)](https://github.com/scottfridwin/homeassistant-macropad-bridge/releases/latest)
 [![Image](https://img.shields.io/badge/image-ghcr.io-blue?logo=docker)](https://github.com/scottfridwin/homeassistant-macropad-bridge/pkgs/container/homeassistant-macropad-bridge)
+[![License](https://img.shields.io/github/license/scottfridwin/homeassistant-macropad-bridge)](LICENSE)
 
 Turn a USB macropad (or any USB keyboard) into a [Home Assistant](https://www.home-assistant.io/) remote. Every key
 press is sent to Home Assistant as an event that your automations can react to, for example to change the volume or
@@ -139,3 +140,11 @@ Watch the events live in **Developer tools → Events** by listening to `macropa
 ## Security
 
 See [SECURITY.md](SECURITY.md) for supported versions, reporting vulnerabilities and verifying images.
+
+## Further reading
+
+- [Development](docs/development.md)
+
+## License
+
+[GPL-3.0](LICENSE)
