@@ -1,12 +1,12 @@
 # Build stage: evdev ships only as source, so compile it against the kernel input headers
-FROM python:3.14-slim@sha256:a2b82f3c48559aa0a8446d9af49826b6e2b2016f4cd2afabfe6013ec53729170 AS build
+FROM python:3.15-slim@sha256:2da676046630d7bf14c6764ae1143dc7fa0377a53f94bf5a642f0b214aca5bce AS build
 RUN apt-get update \
     && apt-get install -y --no-install-recommends gcc libc6-dev linux-libc-dev \
     && rm -rf /var/lib/apt/lists/*
 COPY requirements.txt /tmp/
 RUN pip wheel --no-cache-dir --wheel-dir /wheels -r /tmp/requirements.txt
 
-FROM python:3.14-slim@sha256:a2b82f3c48559aa0a8446d9af49826b6e2b2016f4cd2afabfe6013ec53729170 AS runtime
+FROM python:3.15-slim@sha256:2da676046630d7bf14c6764ae1143dc7fa0377a53f94bf5a642f0b214aca5bce AS runtime
 # pip is not needed at runtime and vendors its own (scanner-flagged) libraries
 RUN --mount=type=bind,from=build,source=/wheels,target=/wheels \
     pip install --no-cache-dir --no-index /wheels/*.whl \
